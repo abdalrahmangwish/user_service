@@ -1,0 +1,18 @@
+// login
+    url_domain:http://localhost:8002/User_service/authenticate
+    row_body_example:
+                    {
+                        "username": "newUser",
+                        "password": "password123"
+                    }
+//register
+    url_domain:http://localhost:8002/User_service/register
+    row_body_example:
+                    {
+                        "username": "newUser",
+                        "password": "password123",
+                        "email": "newuser@example.com",
+                        "role": "user",
+                        "bio": "This is a short bio",
+                        "description": "This is a detailed description of the user"
+                    }
