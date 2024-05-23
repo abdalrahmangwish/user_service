@@ -6,22 +6,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserService {
 
     @Autowired
-    private UserRepo departmentRepository;
+    private UserRepo userRepo;
 
     public List<User> getAll(){
 
-        return departmentRepository.findAll();
+        return userRepo.findAll();
     }
 
-    public User getById(Integer id){
-         Optional<User> department= departmentRepository.findById(id);
-        return department.orElse(null);
+    public User getUserById(int id) {
+        return userRepo.findById(id).orElse(null);
     }
 
 
