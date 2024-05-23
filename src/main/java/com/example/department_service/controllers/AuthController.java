@@ -1,4 +1,5 @@
 package com.example.department_service.controllers;
+
 import com.example.department_service.core.base_service.JwtUtil;
 import com.example.department_service.core.base_service.MyUserDetailsService;
 import com.example.department_service.dto.AuthResponse;
@@ -11,9 +12,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class AuthController {
@@ -70,5 +69,10 @@ public class AuthController {
         return "User registered successfully";
     }
 
-
+    @GetMapping("/user/{id}")
+    public String getUserById(@PathVariable Integer id) {
+        User user = userRepo.findById(id)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found with id: " + id));
+        return user.toString();
+    }
 }
