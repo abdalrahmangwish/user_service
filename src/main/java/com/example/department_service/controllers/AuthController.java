@@ -69,10 +69,5 @@ public class AuthController {
         return "User registered successfully";
     }
 
-    @GetMapping("/user/{id}")
-    public String getUserById(@PathVariable Integer id) {
-        User user = userRepo.findById(id)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found with id: " + id));
-        return user.toString();
-    }
+
 }
